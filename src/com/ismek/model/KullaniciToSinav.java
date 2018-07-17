@@ -17,7 +17,7 @@ public class KullaniciToSinav implements Serializable {
     private int ktsId;
 
     @Column(name="ogr_cevap")
-    @Max(value=100)
+  //  @Max(value=100)
     private String ogrCevap;
 
     @Column(name="is_onay")
@@ -36,14 +36,13 @@ public class KullaniciToSinav implements Serializable {
    // @Max(value=20)
     private String ipAdresi;
 
-    //*2- LÝ VERI DONDURUYOR
     
     @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="kullanici_id")
     //@JsonIgnore
     private Kullanici kullanici;
 
-    //2- LÝ VERI DONDURUYOR
+  
     
     @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="sinav_id")
@@ -54,7 +53,9 @@ public class KullaniciToSinav implements Serializable {
     @OneToMany(fetch=FetchType.EAGER)
     @JsonIgnore
     private Set<MulakatCevaplari> mulakatcevaplari;
-
+    
+    @OneToOne( cascade = CascadeType.ALL,mappedBy = "ktsId")
+    private SinavSonuc sinavsonuc;
 
     public int getKtsId() {
         return ktsId;
@@ -135,6 +136,14 @@ public class KullaniciToSinav implements Serializable {
 
 	public void setMulakatcevaplari(Set<MulakatCevaplari> mulakatcevaplari) {
 		this.mulakatcevaplari = mulakatcevaplari;
+	}
+
+	public SinavSonuc getSinavsonuc() {
+		return sinavsonuc;
+	}
+
+	public void setSinavsonuc(SinavSonuc sinavsonuc) {
+		this.sinavsonuc = sinavsonuc;
 	}
 
 	

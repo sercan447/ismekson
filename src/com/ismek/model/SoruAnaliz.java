@@ -3,6 +3,8 @@ package com.ismek.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name = "tbl_SoruAnaliz")
 public class SoruAnaliz {
     @Id
@@ -18,6 +20,11 @@ public class SoruAnaliz {
     @Column(name = "soru_id")
     private int soruId;
 
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "soruanaliz")
+    @JsonIgnore
+    private Sorular soru;
+    
+    
     public int getAnalizId() {
         return analizId;
     }
@@ -57,4 +64,14 @@ public class SoruAnaliz {
     public void setSoruId(int soruId) {
         this.soruId = soruId;
     }
+
+	public Sorular getSoru() {
+		return soru;
+	}
+
+	public void setSoru(Sorular soru) {
+		this.soru = soru;
+	}
+    
+    
 }

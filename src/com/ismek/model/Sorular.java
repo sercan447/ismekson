@@ -43,6 +43,9 @@ public class Sorular {
     @JsonIgnore
     private Set<Brans> brans;
     
+    @OneToOne(fetch = FetchType.EAGER)
+   // @JsonIgnore
+    private SoruAnaliz soruanaliz;
 
     public Sorular() {}
 
@@ -140,6 +143,14 @@ public class Sorular {
 
 	public void setBrans(Set<Brans> brans) {
 		this.brans = brans;
+	}
+
+	public SoruAnaliz getSoruanaliz() {
+		return soruanaliz;
+	}
+
+	public void setSoruanaliz(SoruAnaliz soruanaliz) {
+		this.soruanaliz = soruanaliz;
 	}
 
 
