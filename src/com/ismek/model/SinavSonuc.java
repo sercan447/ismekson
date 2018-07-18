@@ -15,20 +15,20 @@ public class SinavSonuc implements Serializable {
     private long sSonucId;
 
     @Column(name="d_sayisi",nullable=false)
-    private int dSayisi;
+    private Integer dSayisi;
 
     @Column(name="y_sayisi",nullable=false)
-    private int ySayisi;
+    private Integer ySayisi;
 
     @Column(name="bos_sayisi",nullable=false)
-    private int bosSayisi;
+    private Integer bosSayisi;
 
     @Column(name="son_puan",nullable=false)
-    private int sonPuan;
+    private Integer sonPuan;
 
     @OneToOne
     @JoinColumn(name="kts_id",unique=true)
-    private KullaniciToSinav ktsId;
+    private KullaniciToSinav kts;
 
     public long getsSonucId() {
         return sSonucId;
@@ -38,43 +38,43 @@ public class SinavSonuc implements Serializable {
         this.sSonucId = sSonucId;
     }
 
-    public int getdSayisi() {
+    public Integer getdSayisi() {
         return dSayisi;
     }
 
-    public void setdSayisi(int dSayisi) {
+    public void setdSayisi(Integer dSayisi) {
         this.dSayisi = dSayisi;
     }
 
-    public int getySayisi() {
+    public Integer getySayisi() {
         return ySayisi;
     }
 
-    public void setySayisi(int ySayisi) {
+    public void setySayisi(Integer ySayisi) {
         this.ySayisi = ySayisi;
     }
 
-    public int getBosSayisi() {
+    public Integer getBosSayisi() {
         return bosSayisi;
     }
 
-    public void setBosSayisi(int bosSayisi) {
+    public void setBosSayisi(Integer bosSayisi) {
         this.bosSayisi = bosSayisi;
     }
 
-    public int getSonPuan() {
+    public Integer getSonPuan() {
         return sonPuan;
     }
 
-    public void setSonPuan(int sonPuan) {
+    public void setSonPuan(Integer sonPuan) {
         this.sonPuan = sonPuan;
     }
 
-    public KullaniciToSinav getKtsId() {
-        return ktsId;
+    public KullaniciToSinav getKts() {
+        return kts;
     }
 
-    public void setKtsId(KullaniciToSinav ktsId) {
-        this.ktsId = ktsId;
+    public void setKts(KullaniciToSinav kts) {
+        this.kts = kts;
     }
 }

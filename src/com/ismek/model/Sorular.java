@@ -36,15 +36,15 @@ public class Sorular {
     
     @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="kullanici_id")
-    @JsonIgnore // burayý ACABILIR SORUYU YAZAN KISILERI GOSTEREBILIRSINIZ
+    @JsonIgnore // burayý ACABILIR, SORUYU YAZAN KISILERI GOSTEREBILIRSINIZ
     private Kullanici kullanici;
     
-    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sorulars")
     @JsonIgnore
     private Set<Brans> brans;
     
-    @OneToOne(fetch = FetchType.EAGER)
-   // @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "soru")
+    @JsonIgnore
     private SoruAnaliz soruanaliz;
 
     public Sorular() {}

@@ -10,59 +10,50 @@ public class SoruAnaliz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "analiz_id")
-    private int analizId;
+    private long analizId;
     @Column(name = "dogru_sayisi")
-    private int dogruSayisi;
+    private Integer dogruSayisi;
     @Column(name = "yanlis_sayisi")
-    private int yanlisSayisi;
+    private Integer yanlisSayisi;
     @Column(name = "bos_sayisi")
-    private int bosSayisi;
-    @Column(name = "soru_id")
-    private int soruId;
+    private Integer bosSayisi;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "soruanaliz")
-    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="soru_id")
+    //@JsonIgnore
     private Sorular soru;
     
     
-    public int getAnalizId() {
+    public long getAnalizId() {
         return analizId;
     }
 
-    public void setAnalizId(int analizId) {
+    public void setAnalizId(long analizId) {
         this.analizId = analizId;
     }
 
-    public int getDogruSayisi() {
+    public Integer getDogruSayisi() {
         return dogruSayisi;
     }
 
-    public void setDogruSayisi(int dogruSayisi) {
+    public void setDogruSayisi(Integer dogruSayisi) {
         this.dogruSayisi = dogruSayisi;
     }
 
-    public int getYanlisSayisi() {
+    public Integer getYanlisSayisi() {
         return yanlisSayisi;
     }
 
-    public void setYanlisSayisi(int yanlisSayisi) {
+    public void setYanlisSayisi(Integer yanlisSayisi) {
         this.yanlisSayisi = yanlisSayisi;
     }
 
-    public int getBosSayisi() {
+    public Integer getBosSayisi() {
         return bosSayisi;
     }
 
-    public void setBosSayisi(int bosSayisi) {
+    public void setBosSayisi(Integer bosSayisi) {
         this.bosSayisi = bosSayisi;
-    }
-
-    public int getSoruId() {
-        return soruId;
-    }
-
-    public void setSoruId(int soruId) {
-        this.soruId = soruId;
     }
 
 	public Sorular getSoru() {

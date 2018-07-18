@@ -46,15 +46,16 @@ public class KullaniciToSinav implements Serializable {
     
     @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="sinav_id")
-    //@JsonIgnore
+    @JsonIgnore
     private Sinav sinav;
     
     
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch=FetchType.EAGER,mappedBy="ktsId")
     @JsonIgnore
     private Set<MulakatCevaplari> mulakatcevaplari;
     
-    @OneToOne( cascade = CascadeType.ALL,mappedBy = "ktsId")
+    @OneToOne( cascade = CascadeType.ALL,mappedBy = "kts")
+    @JsonIgnore
     private SinavSonuc sinavsonuc;
 
     public int getKtsId() {

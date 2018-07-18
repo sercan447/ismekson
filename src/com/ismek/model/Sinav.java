@@ -74,7 +74,8 @@ public class Sinav implements Serializable {
    // @JsonIgnore
     private Set<Sorular> sorulars;
    
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="sinav")
+    //BU SINAVI ALMIÞ KULLANICILAR LÝSTESI DONUYOR 
+    @OneToMany(cascade=CascadeType.ALL, fetch= FetchType.EAGER,mappedBy="sinav")
     @JsonIgnore
     private Set<KullaniciToSinav> kullanicitosinav;
     
