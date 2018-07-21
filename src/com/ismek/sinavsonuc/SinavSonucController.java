@@ -31,14 +31,14 @@ public class SinavSonucController {
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<SinavSonuc> get(@PathVariable("id") long id){
 		
 		SinavSonuc sinavsonuc = sinavSonucService.get(id);
 		return ResponseEntity.ok().body(sinavsonuc);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody SinavSonuc sinavsonuc)
 	{
 		sinavSonucService.save(sinavsonuc);
@@ -46,14 +46,14 @@ public class SinavSonucController {
 		
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id ,@RequestBody SinavSonuc sinavsonuc)
 	{
 		sinavSonucService.update(id, sinavsonuc);
 		return ResponseEntity.ok().body("Güncelleme islemi gerceklestirilmistir");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")long id){
 		sinavSonucService.delete(id);
 		return ResponseEntity.ok().body("Silinme iþlei gerçekleþtirildi.");

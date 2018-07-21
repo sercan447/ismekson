@@ -25,14 +25,14 @@ public class MulakatCevaplariController {
 	@Autowired
 	private MulakatCevaplariService mulakatcevaplariservice;
 	
-	@GetMapping("/")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<MulakatCevaplari>> list(){
 		
 		return ResponseEntity.ok(mulakatcevaplariservice.list());
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<MulakatCevaplari> get(@PathVariable("id") long id){
 		
 			MulakatCevaplari mulakatcevaplari = mulakatcevaplariservice.get(id);
@@ -40,7 +40,7 @@ public class MulakatCevaplariController {
 	}
 	
 	
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody MulakatCevaplari mulakatcevaplari)
 	{
 		mulakatcevaplariservice.save(mulakatcevaplari);
@@ -48,14 +48,14 @@ public class MulakatCevaplariController {
 		
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id ,@RequestBody MulakatCevaplari mulakatcevaplari)
 	{
 		mulakatcevaplariservice.update(id, mulakatcevaplari);
 		return ResponseEntity.ok().body("Güncelleme islemi gerceklestirilmistir");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")long id){
 		mulakatcevaplariservice.delete(id);
 		return ResponseEntity.ok().body("Silinme iþlei gerçekleþtirildi.");

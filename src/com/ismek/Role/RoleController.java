@@ -25,21 +25,21 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 	
-	@GetMapping("/")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Role>> list(){
 		
 		return ResponseEntity.ok(roleService.list());
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Role> get(@PathVariable("id") long id){
 		
 		Role role = roleService.get(id);
 		return ResponseEntity.ok().body(role);
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")long id)
 	{
 		roleService.delete(id);
@@ -47,7 +47,7 @@ public class RoleController {
 	}
 	
 	/*sýnýf ýcerýsýndeki KullanýcýToRole Sýnýfýna veri göndermek zorunda degilsin*/
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody Role role)
 	{
 		roleService.save(role);
@@ -55,7 +55,7 @@ public class RoleController {
 		
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id ,@RequestBody Role role)
 	{
 		roleService.update(id, role);

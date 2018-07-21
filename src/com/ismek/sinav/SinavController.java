@@ -37,14 +37,14 @@ public class SinavController {
 	private KullaniciService kullaniciService;
 	
 	
-	@GetMapping("/All")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Sinav>> list(){
 		
 		return ResponseEntity.ok(sinavservice.list());
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Sinav> get(@PathVariable("id") long id){
 		
 		Sinav sinav = sinavservice.get(id);
@@ -52,7 +52,7 @@ public class SinavController {
 	}
 	
 	
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody Sinav sinav)
 	{
 		sinavservice.save(sinav);
@@ -60,14 +60,14 @@ public class SinavController {
 		
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id ,@RequestBody Sinav sinav)
 	{
 		sinavservice.update(id, sinav);
 		return ResponseEntity.ok().body("Güncelleme islemi gerceklestirilmistir");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")long id){
 			sinavservice.delete(id);
 		return ResponseEntity.ok().body("Silinme iþlei gerçekleþtirildi.");

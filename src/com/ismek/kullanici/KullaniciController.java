@@ -25,7 +25,7 @@ public class KullaniciController {
 	private KullaniciService kullaniciService;
 	
 	// Yeni Brans ekle
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Kullanici kullanici){
 		long id = kullaniciService.save(kullanici);
 		return ResponseEntity.ok().body("Yeni kullanici eklendi... "+ id);
@@ -33,27 +33,27 @@ public class KullaniciController {
 	
 	// İstenen id'li kullanici'ı getir
 	
-	@GetMapping("/{id}")	
+	@GetMapping("/get/{id}")	
 	public ResponseEntity<Kullanici> get(@PathVariable("id") long id){
 		Kullanici kullanici = kullaniciService.get(id);
 		return ResponseEntity.ok().body(kullanici);
 	}
 	
 	// Bütün kullaniciı getir
-	@GetMapping("/")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Kullanici>> getAll(){
 		List<Kullanici> kullanicilar = kullaniciService.listKullanici();
 		return ResponseEntity.ok().body(kullanicilar);
 	}
 	
 	// İstenen id'li kullanici'ı güncelle
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Kullanici kullanici){
 		kullaniciService.update(id, kullanici);
 		return ResponseEntity.ok().body("[" + id + "] li kullanici guncellendi...");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") long id){
 		kullaniciService.delete(id);
 		return ResponseEntity.ok().body("[" + id + "] li kullanici silindi...");

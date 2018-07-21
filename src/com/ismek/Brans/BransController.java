@@ -23,34 +23,34 @@ public class BransController {
 	private BransService bransService;
 	
 	// Yeni Brans ekle
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Brans brans){
 		long id = bransService.save(brans);
 		return ResponseEntity.ok().body("Yeni branş eklendi... "+ id);
 	}
 	
 	// İstenen id'li brans'ı getir
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Brans> get(@PathVariable("id") long id){
 		Brans brans = bransService.get(id);
 		return ResponseEntity.ok().body(brans);
 	}
 	
 	// Bütün bransları getir
-	@GetMapping("/All")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Brans>> getAll(){
 		List<Brans> branslar = bransService.listBrans();
 		return ResponseEntity.ok().body(branslar);
 	}
 	
 	// İstenen id'li brans'ı güncelle
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Brans brans){
 		bransService.update(id, brans);
 		return ResponseEntity.ok().body("[" + id + "] li branş güncellendi...");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") long id){
 		bransService.delete(id);
 		return ResponseEntity.ok().body("[" + id + "] li branş silindi...");

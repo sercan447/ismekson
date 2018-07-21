@@ -20,13 +20,13 @@ public class KullaniciToSinavController {
 	@Autowired
 	private KullaniciToSinavService kullaniciToservice;
 	
-	@GetMapping("/")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<KullaniciToSinav>> list(){
 		
 		return ResponseEntity.ok(kullaniciToservice.list());
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody KullaniciToSinav kullaniciToSinav){
 		
 		try {

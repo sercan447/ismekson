@@ -25,14 +25,14 @@ public class MulakatController {
 	@Autowired
 	private MulakatService mulakatservice;
 	
-	@GetMapping("/")
+	@GetMapping("/getAll")
 	public ResponseEntity<List<Mulakat>> list(){
 		
 		return ResponseEntity.ok(mulakatservice.list());
 	}
 	
 	
-	@GetMapping("/{id}")
+	@GetMapping("/get/{id}")
 	public ResponseEntity<Mulakat> get(@PathVariable("id") long id){
 		
 		Mulakat mulakat = mulakatservice.get(id);
@@ -40,7 +40,7 @@ public class MulakatController {
 	}
 	
 	
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> create(@RequestBody Mulakat mulakat)
 	{
 		mulakatservice.save(mulakat);
@@ -48,14 +48,14 @@ public class MulakatController {
 		
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id ,@RequestBody Mulakat mulakat)
 	{
 		mulakatservice.update(id, mulakat);
 		return ResponseEntity.ok().body("Güncelleme islemi gerceklestirilmistir");
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id")long id){
 		mulakatservice.delete(id);
 		return ResponseEntity.ok().body("Silinme iþlei gerçekleþtirildi.");
