@@ -40,7 +40,10 @@ public class RoleDaoImp implements RoleDao{
 
 	@Override
 	public void update(long id, Role Update) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		Role role2 = session.byId(Role.class).load(id);
+		role2.setRoles(Update.getRoles());
+		session.flush();
 		
 	}
 

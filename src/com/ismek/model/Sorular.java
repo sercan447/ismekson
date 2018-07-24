@@ -40,7 +40,7 @@ public class Sorular {
     private Kullanici kullanici;
     
     @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sorulars")
-    @JsonIgnore
+   // @JsonIgnore
     private Set<Brans> brans;
     
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "soru")

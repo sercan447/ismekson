@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+<bean  name="customErisim" class="com.ismek.exphandler.CustomAccessDeniedHandler" />
+<bean  name="customBasicAuth" class="com.ismek.config.CustomBasicAuthenticationEntryPoint" />
+
+<security:http auto-config="true" use-expressions="true"  entry-point-ref="customBasicAuth">
+
+		<security:access-denied-handler ref="customErisim" />
+			
+		<security:intercept-url pattern="/" access="permitAll"  />
+		<security:intercept-url   pattern="/api/v1/kullanici/login/**" access="permitAll" />
+		<security:intercept-url  pattern="/api/v1/**" access="hasRole('ROLE_ADMIN')"   />
+		
+		
+	
+<!-- 		<security:form-login login-page="/giris" -->
+<!-- 							username-parameter="tc_no" password-parameter="telefon"   -->
+<!-- 							authentication-failure-url="/giris?error=true" /> -->
+							
+<!-- 		<security:logout invalidate-session="true"  delete-cookies="JSESSIONID" logout-success-url="/" /> -->
+<!-- 		<security:remember-me  user-service-ref="jdbcUserService" key="benimKey" remember-me-parameter="hatirlabeni" /> -->
+<!-- 		<security:csrf disabled="false" /> -->
+	
+	</security:http>
+
+	<security:global-method-security secured-annotations="enabled"  />	
+	
+	<security:authentication-manager>
+		<security:authentication-provider >
+			<security:user-service >
+				<security:user name="ismekwebservis" password="fineor7cip4you" authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+		
+		
+		<security:authentication-provider>
+		
+			<security:jdbc-user-service id="jdbcUserService"  data-source-ref="dataSource" 
+			users-by-username-query="SELECT tc_no AS username,telefon AS password,'1' AS enabled FROM tbl_kullanici WHERE tc_no = ?" 
+			
+			authorities-by-username-query="	SELECT k.tc_no AS username,r.roles AS authority FROM tbl_kullanici AS k 
+											INNER JOIN tbl_kullanicitorole AS kr ON k.kullanici_id = kr.kullanici_id 	
+											INNER JOIN tbl_role AS r ON kr.role_id = r.role_id 
+											WHERE k.tc_no = ?"/>
+<!-- 		 <security:password-encoder  ref="passwordEncoder" />  -->
+		</security:authentication-provider>
+	</security:authentication-manager>
+		
+<!-- 	<bean id="passwordEncoder" class="org.springframework.security.crypto.password.StandardPasswordEncoder"/> -->
+	
+
+</beans>

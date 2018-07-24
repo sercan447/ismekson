@@ -13,7 +13,9 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
   		classpath:com/ismek/config/applicationContext.xml
+  		classpath:com/ismek/config/guvenlikContext.xml
   		WEB-INF/dispatcher-servlet.xml
+  		
   	</param-value>
   </context-param>
   <servlet>

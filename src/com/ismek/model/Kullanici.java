@@ -28,7 +28,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name="tbl_Kullanici")
 @NamedQuery(name = "Kullanici.findByLogin",
-										query = "SELECT d FROM Kullanici d WHERE d.tcNo = :tcno AND d.telefon = :telefon")
+										query = "SELECT d FROM Kullanici d WHERE d.tcNo = :tcNo AND d.telefon = :telefon")
 
 public class Kullanici implements Serializable{
 
