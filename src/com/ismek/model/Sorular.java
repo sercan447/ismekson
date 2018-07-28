@@ -34,12 +34,12 @@ public class Sorular {
     @Column(name = "zorluk_seviyesi")
     private String zorlukSeviyesi;
     
-    @ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="kullanici_id")
     @JsonIgnore // burayý ACABILIR, SORUYU YAZAN KISILERI GOSTEREBILIRSINIZ
     private Kullanici kullanici;
     
-    @ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="sorulars")
+    @ManyToMany(fetch=FetchType.EAGER,mappedBy="sorulars")
    // @JsonIgnore
     private Set<Brans> brans;
     

@@ -1,4 +1,4 @@
-package com.ismek.kullanici;
+package com.ismek.model;
 
 import java.io.Serializable;
 

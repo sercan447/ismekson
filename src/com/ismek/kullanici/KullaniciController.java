@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ismek.model.BaseReturn;
 import com.ismek.model.Kullanici;
 import com.ismek.model.Role;
 
