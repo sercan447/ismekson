@@ -26,12 +26,12 @@ public class Brans implements Serializable {
     @Column(name="kontenjan")
     private Integer kontenjan;
         
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_BransToSorular", joinColumns = @JoinColumn(name = "soru_id"),inverseJoinColumns = @JoinColumn(name = "brans_id"))
     @JsonIgnore
     private Set<Sorular> sorulars;
     
-    @OneToMany(mappedBy="bransId",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="bransId")
     @JsonIgnore
     private List<Sinav> sinav = new ArrayList<Sinav>();
 

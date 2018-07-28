@@ -58,20 +58,20 @@ public class Sinav implements Serializable {
     private boolean isAktif;
 
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ogretmen_id")
     @JsonIgnore //OGRETMEN BILGILERINI GOSTEREBILIRSINIZ BURADA
     private Kullanici ogretmenId;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="brans_id")
 	//@JsonBackReference  //SINAVIN HANGI BRANÞA AIT OLDUGUNU GOSTEREBILIRSINIZ
 	private Brans bransId;
 
 	   	    
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_SinavToSorular", joinColumns = @JoinColumn(name = "sinav_id"),inverseJoinColumns = @JoinColumn(name = "soru_id"))
-   // @JsonIgnore
+    @JsonIgnore
     private Set<Sorular> sorulars;
    
     //BU SINAVI ALMIÞ KULLANICILAR LÝSTESI DONUYOR 

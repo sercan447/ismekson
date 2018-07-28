@@ -66,13 +66,13 @@ public class Kullanici implements Serializable{
     @Size(max =1 ,message = "1 karakterden fazla giremezsiniz ")
     private String cinsiyet;
     
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_KullaniciToRole",joinColumns = @JoinColumn(name = "kullanici_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
    // @JsonIgnore
     private Set<Role> roles;
     
    
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_KullaniciToBrans", joinColumns = @JoinColumn(name = "kullanici_id"), inverseJoinColumns = @JoinColumn(name = "brans_id"))
    // @JsonIgnore
     private Set<Brans> branslar;
@@ -82,7 +82,7 @@ public class Kullanici implements Serializable{
     private Set<Sorular> sorular;
     
     
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy="ogretmenId")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy="ogretmenId")
     @JsonIgnore
     private List<Sinav> sinav = new ArrayList<Sinav>();
     

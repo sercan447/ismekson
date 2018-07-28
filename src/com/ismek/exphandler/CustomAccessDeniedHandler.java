@@ -20,8 +20,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 	public void handle(HttpServletRequest req, HttpServletResponse res, AccessDeniedException arg2) throws IOException, ServletException {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		
-		
+
 		if(auth != null) {
 			System.out.println("name : "+auth.getName()+"\n protected URI : "+req.getRequestURI());
 		}

@@ -21,13 +21,13 @@ public class MulakatCevaplari implements Serializable {
     @Column(name="cevap")
     private String cevap;
 
-   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="kts_id")
     @JsonIgnore
     private KullaniciToSinav ktsId;
    
 
-    @OneToOne(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="mulakat_id")
     //@JsonIgnore
     private Mulakat mulakat;

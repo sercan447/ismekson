@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class RestResponseExceptionHandler {
 
 	
@@ -20,10 +20,11 @@ public class RestResponseExceptionHandler {
 		return new ResponseEntity<Object>("BLBALBAL"+e.getLocalizedMessage(),HttpStatus.NOT_FOUND);
 	}
 	
-	@ExceptionHandler(NoResultException.class)
+	/*@ExceptionHandler(NoResultException.class)
 	public ResponseEntity<Object> HatNoResultHandle(NoResultException noresult){
 		return new ResponseEntity<Object>("No Result Hatasý",HttpStatus.NOT_FOUND);
 	}
+	*/
 	
 	
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -71,21 +72,32 @@ public class KullaniciController {
 		return ResponseEntity.ok().body("[" + id + "] li kullanici silindi...");
 	}
 	
-	/*
-	@GetMapping("/{mail}/{tcno}")
-	public ResponseEntity<?> logintwo(@PathVariable("tcno")String mail,@PathVariable("telefon")String tcno){
+	
+	
+	@GetMapping("/login/{tcno}/{telefon}")
+	public ResponseEntity<?> logintwo(@PathVariable("tcno")String tcno,@PathVariable("telefon")String telefon){
 		
-		Kullanici kullanici = kullaniciService.login(mail, tcno);
+		BaseReturn<Kullanici> bs = new BaseReturn<Kullanici>();
+		
+		Kullanici kullanici = kullaniciService.login(tcno, telefon);
 		if(kullanici != null)
 		{
-			return ResponseEntity.ok().body(kullanici);
+			bs.setCode("0000");
+			bs.setMessage("Kullanýcý iþlemi baþarýlý");
+			bs.setData(kullanici);
+			
+			return ResponseEntity.ok().body(bs);
 		}
-			return ResponseEntity.ok().body(kullanici);
+		bs.setCode("0001");
+		bs.setMessage("Kullanýcý adý veya þifreniz hatalýdýr.");
+		bs.setData(null);
+	
+		return ResponseEntity.ok().body(bs);
 			
 	}
-	*/
 	
-	@GetMapping("/login/{tcNo}/{telefon}")
+	
+	/*@GetMapping("/login/{tcNo}/{telefon}")
 	public ResponseEntity<?> login(@PathVariable("tcNo")String tcno,@PathVariable("telefon")String telefon){
 		
 		Kullanici kullanici = kullaniciService.login(tcno, telefon);
@@ -97,9 +109,13 @@ public class KullaniciController {
 			}
 	
 		return ResponseEntity.ok().body(new User(kullanici.getTcNo(),kullanici.getTelefon(),grand));	
+		}else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("bulunamadý. 2");	
 		}		
-			return ResponseEntity.ok().body(kullanici);
+			//return ResponseEntity.ok().body(kullanici);
 		
 	}
+	*/
+	
 	
 }

@@ -37,7 +37,7 @@ public class KullaniciToSinav implements Serializable {
     private String ipAdresi;
 
     
-    @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="kullanici_id")
     //@JsonIgnore
     private Kullanici kullanici;
@@ -54,7 +54,7 @@ public class KullaniciToSinav implements Serializable {
     @JsonIgnore
     private Set<MulakatCevaplari> mulakatcevaplari;
     
-    @OneToOne( cascade = CascadeType.ALL,mappedBy = "kts")
+    @OneToOne(mappedBy = "kts")
     @JsonIgnore
     private SinavSonuc sinavsonuc;
 

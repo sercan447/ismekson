@@ -84,8 +84,12 @@ public class KullaniciDaoImpl implements KullaniciDao {
 		sorgu.setParameter("tcNo",tcNo);	
 		sorgu.setParameter("telefon", telefon);
 		
-		Kullanici kullanici = sorgu.getSingleResult();
-		return kullanici;
+		List<Kullanici> kullanici = sorgu.getResultList();
+		
+		if(kullanici != null && kullanici.size() > 0) {
+			return kullanici.get(0);
+		}
+		return null;
 	}
 
 }
