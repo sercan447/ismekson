@@ -9,6 +9,8 @@ import java.util.Set;
 
 @Entity
 @Table(name="tbl_KullaniciToSinav")
+@NamedNativeQuery(name= "kullaniciToSinav.findByKullaniciId" ,
+query="SELECT ks FROM tbl_KullaniciToSinav ks WHERE ks.kullanici_id = :kullanici_id AND ks.is_durum = :is_durum")
 public class KullaniciToSinav implements Serializable {
 
     @Id
@@ -21,10 +23,10 @@ public class KullaniciToSinav implements Serializable {
     private String ogrCevap;
 
     @Column(name="is_onay")
-    private boolean isOnay;
+    private Boolean isOnay;
 
     @Column(name="is_durum")
-    private boolean isDurum;
+    private Boolean isDurum;
 
     @Column(name="m_puan")
     private Integer mPuan;
@@ -46,7 +48,7 @@ public class KullaniciToSinav implements Serializable {
     
     @ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinColumn(name="sinav_id")
-    @JsonIgnore
+    //@JsonIgnore
     private Sinav sinav;
     
     
@@ -54,7 +56,7 @@ public class KullaniciToSinav implements Serializable {
     @JsonIgnore
     private Set<MulakatCevaplari> mulakatcevaplari;
     
-    @OneToOne(mappedBy = "kts")
+    @OneToOne(mappedBy = "kullaniciToSinav")
     @JsonIgnore
     private SinavSonuc sinavsonuc;
 
@@ -74,19 +76,19 @@ public class KullaniciToSinav implements Serializable {
         this.ogrCevap = ogrCevap;
     }
 
-    public boolean isOnay() {
+    public Boolean isOnay() {
         return isOnay;
     }
 
-    public void setOnay(boolean onay) {
+    public void setOnay(Boolean onay) {
         isOnay = onay;
     }
 
-    public boolean isDurum() {
+    public Boolean isDurum() {
         return isDurum;
     }
 
-    public void setDurum(boolean durum) {
+    public void setDurum(Boolean durum) {
         isDurum = durum;
     }
 

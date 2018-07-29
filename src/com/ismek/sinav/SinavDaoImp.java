@@ -1,5 +1,6 @@
 package com.ismek.sinav;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,7 +17,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ismek.model.Kullanici;
+import com.ismek.model.KullaniciToSinav;
 import com.ismek.model.Sinav;
+import com.ismek.model.Sorular;
 
 @Repository
 @Transactional
@@ -65,7 +68,7 @@ public class SinavDaoImp implements SinavDao{
 		try {
 
 		sinav2.setAktif(update.isAktif());
-		sinav2.setBransId(update.getBransId());
+		sinav2.setBrans(update.getBrans());
 		sinav2.setBsSaati(update.getBsSaati());
 		sinav2.setKatkiYuzdesi(update.getKatkiYuzdesi());
 		sinav2.setOgretmenId(update.getOgretmenId());
@@ -94,6 +97,25 @@ public class SinavDaoImp implements SinavDao{
 		
 		session.delete(sinav);
 		session.flush();
+	}
+
+	@Override
+	public List<Sorular> getSorularBySinavId(long id) {
+	
+		Sinav sinav = sessionfactory.getCurrentSession().get(Sinav.class,id);
+		
+		List<Sorular> sor = new ArrayList<Sorular>(sinav.getSorulars());
+//		Session session = sessionfactory.getCurrentSession();
+//        CriteriaBuilder cb = session.getCriteriaBuilder();
+//        CriteriaQuery<Sinav> cq = cb.createQuery(Sinav.class);
+//        Root<Sinav> root = cq.from(Sinav.class);
+//        cq.select(root).where(cb.and(
+//        	    cb.equal(root.get("kullanici"), id),
+//        	    cb.equal(root.get("isDurum"), 0)));
+        
+//        Query<Sorular> query = session.createQuery(cq).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		
+        return sor;
 	}
 
 }

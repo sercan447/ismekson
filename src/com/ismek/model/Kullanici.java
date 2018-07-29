@@ -90,12 +90,31 @@ public class Kullanici implements Serializable{
     @OneToMany(fetch = FetchType.EAGER,mappedBy="kullanici")
     @JsonIgnore
     private Set<KullaniciToSinav> kullaniciToSinav;
+    
+    
+    @Column(name="is_aktif")
+    private Boolean isAktif;
+    
+    
 
     public Kullanici() {
     	
     	
     }
     
+
+    
+	public Boolean getIsAktif() {
+		return isAktif;
+	}
+
+
+
+	public void setIsAktif(Boolean isAktif) {
+		this.isAktif = isAktif;
+	}
+
+
 
 	public long getKullaniciId() {
         return kullaniciId;

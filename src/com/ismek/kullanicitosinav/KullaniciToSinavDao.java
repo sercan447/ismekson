@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.ismek.model.KullaniciToSinav;
+import com.ismek.model.Sinav;
 
 public interface KullaniciToSinavDao {
 	
@@ -19,5 +20,8 @@ public interface KullaniciToSinavDao {
     void delete(long id);
     
     List<KullaniciToSinav> getByName(String name);
+    
+    List<KullaniciToSinav> getByKullanici(long id);
 
+    
 }

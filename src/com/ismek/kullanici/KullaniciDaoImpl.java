@@ -50,9 +50,6 @@ public class KullaniciDaoImpl implements KullaniciDao {
         return query.list();
        // return session.createCriteria(Kullanici.class).list();
 		
-		
-		
-		
 	}
 
 	@Override

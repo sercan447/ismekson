@@ -28,7 +28,7 @@ public class SinavSonuc implements Serializable {
 
     @OneToOne
     @JoinColumn(name="kts_id",unique=true)
-    private KullaniciToSinav kts;
+    private KullaniciToSinav kullaniciToSinav;
 
     public long getsSonucId() {
         return sSonucId;
@@ -70,11 +70,11 @@ public class SinavSonuc implements Serializable {
         this.sonPuan = sonPuan;
     }
 
-    public KullaniciToSinav getKts() {
-        return kts;
+    public KullaniciToSinav getKullaniciToSinav() {
+        return kullaniciToSinav;
     }
 
-    public void setKts(KullaniciToSinav kts) {
-        this.kts = kts;
+    public void setKullaniciToSinav(KullaniciToSinav kullaniciToSinav) {
+        this.kullaniciToSinav = kullaniciToSinav;
     }
 }

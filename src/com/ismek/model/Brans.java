@@ -31,7 +31,7 @@ public class Brans implements Serializable {
     @JsonIgnore
     private Set<Sorular> sorulars;
     
-    @OneToMany(mappedBy="bransId")
+    @OneToMany(mappedBy="brans")
     @JsonIgnore
     private List<Sinav> sinav = new ArrayList<Sinav>();
 

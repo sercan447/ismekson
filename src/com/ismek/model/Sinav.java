@@ -55,7 +55,7 @@ public class Sinav implements Serializable {
     private Date olusturmaTarihi;
     
     @Column(name="is_aktif")
-    private boolean isAktif;
+    private Boolean isAktif;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -66,7 +66,7 @@ public class Sinav implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="brans_id")
 	//@JsonBackReference  //SINAVIN HANGI BRANÞA AIT OLDUGUNU GOSTEREBILIRSINIZ
-	private Brans bransId;
+	private Brans brans;
 
 	   	    
     @ManyToMany(fetch = FetchType.EAGER)
@@ -160,20 +160,20 @@ public class Sinav implements Serializable {
 		this.ogretmenId = ogretmenId;
 	}
 
-	public boolean isAktif() {
+	public Boolean isAktif() {
 		return isAktif;
 	}
 
-	public void setAktif(boolean isAktif) {
+	public void setAktif(Boolean isAktif) {
 		this.isAktif = isAktif;
 	}
 
-	public Brans getBransId() {
-		return bransId;
+	public Brans getBrans() {
+		return brans;
 	}
 
-	public void setBransId(Brans bransId) {
-		this.bransId = bransId;
+	public void setBrans(Brans brans) {
+		this.brans = brans;
 	}
 
     public Set<Sorular> getSorulars() {

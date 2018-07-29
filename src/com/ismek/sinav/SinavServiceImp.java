@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ismek.model.Sinav;
+import com.ismek.model.Sorular;
 
 @Service
 public class SinavServiceImp implements SinavService {
@@ -40,6 +41,12 @@ public class SinavServiceImp implements SinavService {
 	public void delete(long id) {
 		sinavdao.delete(id);
 		
+	}
+
+	@Override
+	public List<Sorular> getSorularBySinavId(long id) {
+	
+		return sinavdao.getSorularBySinavId(id);
 	}
 
 }

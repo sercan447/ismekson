@@ -49,4 +49,10 @@ public class KullaniciToSinavServiceImp implements KullaniciToSinavService {
 		return null;
 	}
 
+	@Override
+	public List<KullaniciToSinav> getByKullanici(long id) {
+		
+		return kullaniciTosinav.getByKullanici(id);
+	}
+
 }

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ismek.Brans.BransService;
 import com.ismek.kullanici.KullaniciService;
 import com.ismek.model.Sinav;
+import com.ismek.model.Sorular;
 
 
 @RestController
@@ -71,6 +72,13 @@ public class SinavController {
 	public ResponseEntity<?> delete(@PathVariable("id")long id){
 			sinavservice.delete(id);
 		return ResponseEntity.ok().body("Silinme iþlei gerçekleþtirildi.");
+	}
+	
+	@GetMapping("/findSorularBySinavId/{id}")
+	public ResponseEntity<List<Sorular>> findSorularBySinavId(@PathVariable("id") long id){
+		
+		 
+		return ResponseEntity.ok().body(sinavservice.getSorularBySinavId(id));
 	}
 	
 	/*

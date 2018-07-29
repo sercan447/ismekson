@@ -19,5 +19,7 @@ public interface KullaniciToSinavService {
     void delete(long id);
     
     List<KullaniciToSinav> getByName(String name);
+    
+    List<KullaniciToSinav> getByKullanici(long id);
 
 }
