@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ismek.model.Brans;
+import com.ismek.model.Kullanici;
+import com.ismek.model.Sorular;
 
 @Service
 @Transactional(readOnly=true)
@@ -51,6 +53,17 @@ public class BransServiceImpl implements BransService{
 	@Override
 	public void addSoruToBrans(long soruId, long bransId) {
 		bransDao.addSoruToBrans(soruId, bransId);
+	}
+
+	@Override
+	public List<Sorular> getSorularByBransId(long id) {
+		return bransDao.getSorularByBransId(id);
+	}
+
+	@Override
+	public List<Kullanici> getKullanicilarByBransId(long id) {
+		
+		return bransDao.getKullanicilarByBransId(id);
 	}
 	
 	

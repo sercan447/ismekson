@@ -1,5 +1,6 @@
 package com.ismek.Brans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -83,6 +84,20 @@ public class BransDaoImpl implements BransDao{
 		brans.getSorulars().add(soru);
 		//soru.getBranslar().add(brans);
 		
+	}
+
+	@Override
+	public List<Sorular> getSorularByBransId(long id) {
+		Brans brans = sessionFactory.getCurrentSession().byId(Brans.class).load(id);
+		List<Sorular> sorular = new ArrayList<Sorular>(brans.getSorulars());
+		return sorular;
+	}
+
+	@Override
+	public List<Kullanici> getKullanicilarByBransId(long id) {
+		Brans brans = sessionFactory.getCurrentSession().byId(Brans.class).load(id);
+		//List<Kullanici> kullanicilar = new ArrayList<Sorular>(brans.getSorulars());
+		return null;
 	}
 	
 	

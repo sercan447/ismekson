@@ -27,18 +27,19 @@
 		<security:access-denied-handler ref="customErisim" />
 			
 		<security:intercept-url pattern="/" access="permitAll"  />
-		<security:intercept-url   pattern="/api/v1/kullanici/login/**" access="permitAll" />
+		<security:intercept-url  pattern="/api/v1/kullanici/login/**" access="permitAll" />
 		<security:intercept-url  pattern="/api/v1/**" access="hasRole('ROLE_ADMIN')"   />
 		
 		
-	
+		<!-- <security:intercept-url  pattern="/api/v1/kullanicitosinav/save" access="hasRole('ROLE_ADMIN')"  method="POST" /> -->
+
 <!-- 		<security:form-login login-page="/giris" -->
 <!-- 							username-parameter="tc_no" password-parameter="telefon"   -->
 <!-- 							authentication-failure-url="/giris?error=true" /> -->
 							
 <!-- 		<security:logout invalidate-session="true"  delete-cookies="JSESSIONID" logout-success-url="/" /> -->
 <!-- 		<security:remember-me  user-service-ref="jdbcUserService" key="benimKey" remember-me-parameter="hatirlabeni" /> -->
-<!-- 		<security:csrf disabled="false" /> -->
+		<security:csrf disabled="true" />
 	
 	</security:http>
 

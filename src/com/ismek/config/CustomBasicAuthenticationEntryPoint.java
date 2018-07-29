@@ -23,7 +23,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
 		
 		PrintWriter writer = response.getWriter();
 		request.setCharacterEncoding("UTF8");
-		writer.print("Bu Web Servislere Erisim için Authenticate islemleri erisim gerçeklestirilmektedir .: "+authException.getMessage());
+		writer.print("Bu Web Servislere Erisim için Authenticate islemleri erisim gerçeklestirilmektedir.: "+authException.getMessage());
 		
 	}
 

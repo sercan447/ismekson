@@ -27,9 +27,12 @@ public class Brans implements Serializable {
     private Integer kontenjan;
         
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "tbl_BransToSorular", joinColumns = @JoinColumn(name = "soru_id"),inverseJoinColumns = @JoinColumn(name = "brans_id"))
+    @JoinTable(name = "tbl_BransToSorular", joinColumns = @JoinColumn(name = "brans_id"),inverseJoinColumns = @JoinColumn(name = "soru_id"))
     @JsonIgnore
     private Set<Sorular> sorulars;
+    
+//    @ManyToMany(fetch = FetchType.EAGER,mappedBy="branslar")
+//    private List<Kullanici> kullanicilar;
     
     @OneToMany(mappedBy="brans")
     @JsonIgnore
@@ -37,7 +40,24 @@ public class Brans implements Serializable {
 
     public Brans() {}
     
-    public long getBransId() {
+    
+    
+//    
+//    public List<Kullanici> getKullanicilar() {
+//		return kullanicilar;
+//	}
+//
+//
+//
+//
+//	public void setKullanicilar(List<Kullanici> kullanicilar) {
+//		this.kullanicilar = kullanicilar;
+//	}
+
+
+
+
+	public long getBransId() {
         return bransId;
     }
 

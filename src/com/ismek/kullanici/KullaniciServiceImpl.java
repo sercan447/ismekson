@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ismek.model.Kullanici;
+import com.ismek.model.Sinav;
 
 @Service
 
@@ -46,5 +47,7 @@ public class KullaniciServiceImpl implements KullaniciService{
 		
 		return kullaniciDao.login(tcNo, telefon);
 	}
+
+
 
 }

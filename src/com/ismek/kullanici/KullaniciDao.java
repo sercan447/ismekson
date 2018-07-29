@@ -3,6 +3,7 @@ package com.ismek.kullanici;
 import java.util.List;
 
 import com.ismek.model.Kullanici;
+import com.ismek.model.Sinav;
 
 
 public interface KullaniciDao {
@@ -20,5 +21,7 @@ public interface KullaniciDao {
     List<Kullanici> getByName(String name);
     
     Kullanici login(String tcNo,String telefon);
+    
+    
 	
 }

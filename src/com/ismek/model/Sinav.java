@@ -68,7 +68,7 @@ public class Sinav implements Serializable {
 	//@JsonBackReference  //SINAVIN HANGI BRANÞA AIT OLDUGUNU GOSTEREBILIRSINIZ
 	private Brans brans;
 
-	   	    
+	   	  
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tbl_SinavToSorular", joinColumns = @JoinColumn(name = "sinav_id"),inverseJoinColumns = @JoinColumn(name = "soru_id"))
     @JsonIgnore

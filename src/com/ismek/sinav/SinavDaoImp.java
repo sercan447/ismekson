@@ -1,6 +1,8 @@
 package com.ismek.sinav;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -44,10 +46,10 @@ public class SinavDaoImp implements SinavDao{
 	@Override
 	public List<Sinav> list() {
 		
-		/*Session session = sessionfactory.getCurrentSession();
-		Criteria cr = session.createCriteria(Sinav.class);
-		List<Sinav> sinavlist = cr.list();
-		return sinavlist;*/
+			/*Session session = sessionfactory.getCurrentSession();
+			Criteria cr = session.createCriteria(Sinav.class);
+			List<Sinav> sinavlist = cr.list();
+			return sinavlist;*/
 		
 		Session session = sessionfactory.getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -105,15 +107,20 @@ public class SinavDaoImp implements SinavDao{
 		Sinav sinav = sessionfactory.getCurrentSession().get(Sinav.class,id);
 		
 		List<Sorular> sor = new ArrayList<Sorular>(sinav.getSorulars());
-//		Session session = sessionfactory.getCurrentSession();
-//        CriteriaBuilder cb = session.getCriteriaBuilder();
-//        CriteriaQuery<Sinav> cq = cb.createQuery(Sinav.class);
-//        Root<Sinav> root = cq.from(Sinav.class);
-//        cq.select(root).where(cb.and(
-//        	    cb.equal(root.get("kullanici"), id),
-//        	    cb.equal(root.get("isDurum"), 0)));
-        
-//        Query<Sorular> query = session.createQuery(cq).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+		Collections.sort(sor, new Comparator<Sorular>() {
+
+		        public int compare(Sorular o1, Sorular o2) {
+		        	if (o1.getSoruId() > o2.getSoruId()) {
+						return 1;
+					}else if (o1.getSoruId() < o2.getSoruId()) {
+						return -1;
+					}else if (o1.getSoruId() == o2.getSoruId()) {
+						return 0;
+					}
+		            return 0;
+		        }
+		    });
 		
         return sor;
 	}

@@ -1,6 +1,7 @@
 package com.ismek.Brans;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ismek.model.Brans;
+import com.ismek.model.Sorular;
 
 @RestController
 @RequestMapping("/api/v1/brans")
@@ -29,30 +31,37 @@ public class BransController {
 		return ResponseEntity.ok().body("Yeni branş eklendi... "+ id);
 	}
 	
-	// İstenen id'li brans'ı getir
+	// istenen id'li brans getir
 	@GetMapping("/get/{id}")
 	public ResponseEntity<Brans> get(@PathVariable("id") long id){
 		Brans brans = bransService.get(id);
 		return ResponseEntity.ok().body(brans);
 	}
 	
-	// Bütün bransları getir
+	// Butun branslari getir
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Brans>> getAll(){
 		List<Brans> branslar = bransService.listBrans();
 		return ResponseEntity.ok().body(branslar);
 	}
 	
-	// İstenen id'li brans'ı güncelle
+	// istenen id'li bransi guncelle
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody Brans brans){
 		bransService.update(id, brans);
-		return ResponseEntity.ok().body("[" + id + "] li branş güncellendi...");
+		return ResponseEntity.ok().body("[" + id + "] li brans guncellendi...");
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") long id){
 		bransService.delete(id);
-		return ResponseEntity.ok().body("[" + id + "] li branş silindi...");
+		return ResponseEntity.ok().body("[" + id + "] li brans silindi...");
+	}
+	
+	//istenen id'li brans�n sorularini getir
+	@GetMapping("/findSorularByBransId/{id}")
+	public ResponseEntity<List<Sorular>> findSorularByBransId(@PathVariable("id") long id){
+		
+		return ResponseEntity.ok().body(bransService.getSorularByBransId(id));
 	}
 }
